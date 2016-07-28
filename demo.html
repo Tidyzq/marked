@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <textarea id="text-input" oninput="this.editor.update()"
+              rows="6" cols="60"># Inline math
+$x^2$ means square of $x$
+# Blocked math
+$$
+y=ax^2+bx+c
+$$</textarea>
+    <div id="preview"> </div>
+    <script src="lib/marked.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.js"></script>
+    <link rel="stylesheet" href="https://gist.githubusercontent.com/tuzz/3331384/raw/d1771755a3e26b039bff217d510ee558a8a1e47d/github.css">
+    <script>
+      function Editor(input, preview) {
+        marked.setOptions({
+          math: function(text) {
+            try {
+              return katex.renderToString(text, { displayMode: true });
+            } catch (error) {
+              return error.message;
+            }
+          },
+          inlineMath: function(text) {
+            try {
+              return katex.renderToString(text, { displayMode: false });
+            } catch (error) {
+              return error.message;
+            }
+          }
+        });
+        this.update = function () {
+          preview.innerHTML = marked(input.value);
+        };
+        input.editor = this;
+        this.update();
+      }
+      var $ = function (id) { return document.getElementById(id); };
+      new Editor($("text-input"), $("preview"));
+    </script>
+  </body>
+</html>

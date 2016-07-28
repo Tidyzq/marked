@@ -1,3 +1,5 @@
+**This version is configured by Tidyzq to add support [latex style math formula](#Latex style math formula)**
+
 # marked
 
 > A full-featured markdown parser and compiler, written in JavaScript. Built
@@ -282,6 +284,33 @@ var tokens = lexer.lex(text);
 console.log(tokens);
 console.log(lexer.rules);
 ```
+
+## Latex style math formula
+
+You can set your own formula render in `option`, default settings won't do any thing unless you configured `math` or `inlineMath` property.
+
+Take [Katex](https://github.com/Khan/KaTeX) for example:
+
+``` javascript
+marked.setOptions({
+  math: function(text) {
+    try {
+      return katex.renderToString(text, { displayMode: true });
+    } catch (error) {
+      return error.message;
+    }
+  },
+  inlineMath: function(text) {
+    try {
+      return katex.renderToString(text, { displayMode: false });
+    } catch (error) {
+      return error.message;
+    }
+  }
+});
+```
+
+Here is an [example](https://raw.githubusercontent.com/Tidyzq/marked/master/demo.html)
 
 ## CLI
 
