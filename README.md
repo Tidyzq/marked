@@ -310,7 +310,7 @@ marked.setOptions({
 });
 ```
 
-Here is an [example](https://raw.githubusercontent.com/Tidyzq/marked/master/demo.html)
+Here is an [example](https://rawgit.com/Tidyzq/marked/master/demo.html)
 
 ## CLI
 
