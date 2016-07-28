@@ -1,4 +1,4 @@
-**This version is configured by Tidyzq to add support [latex style math formula](#Latex style math formula)**
+**This version is configured by Tidyzq to add support [latex style math formula](#latex-style-math-formula)**
 
 # marked
 
