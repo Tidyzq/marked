@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 <html>
-  <body>
-    <textarea id="text-input" oninput="this.editor.update()"
-              rows="6" cols="60"># Inline math
-$x^2$ means square of $x$
-# Blocked math
-$$
-y=ax^2+bx+c
-$$</textarea>
-    <div id="preview"> </div>
+  <head>
     <script src="lib/marked.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.3.0/github-markdown.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.js"></script>
-    <link rel="stylesheet" href="https://gist.githubusercontent.com/tuzz/3331384/raw/d1771755a3e26b039bff217d510ee558a8a1e47d/github.css">
+  </head>
+  <body>
+    <textarea id="text-input" oninput="this.editor.update()"
+              rows="6" cols="60"></textarea>
+    <div id="preview" class="markdown-body"> </div>
     <script>
       function Editor(input, preview) {
         marked.setOptions({
@@ -38,6 +35,7 @@ $$</textarea>
         this.update();
       }
       var $ = function (id) { return document.getElementById(id); };
+      $("text-input").value = "# Inline math\n$x^2$ means square of $x$\n# Blocked math\n$$\ny=ax^2+bx+c\n$$";
       new Editor($("text-input"), $("preview"));
     </script>
   </body>
